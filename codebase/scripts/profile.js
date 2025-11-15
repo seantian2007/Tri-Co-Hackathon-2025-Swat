@@ -62,18 +62,20 @@ function calculateStats() {
     const completedRequestedJobs = allRequestedJobs.filter(job => job.completed === true);
     const totalCompleted = completedAcceptedJobs.length + completedRequestedJobs.length;
 
-    // Count by service type for completed accepted jobs
-    const deliveryCount = completedAcceptedJobs.filter(job => {
+    // Count by service type for completed jobs (both accepted and requested)
+    const allCompletedJobs = [...completedAcceptedJobs, ...completedRequestedJobs];
+    
+    const deliveryCount = allCompletedJobs.filter(job => {
         return job.serviceType === 'delivery' || 
                (job.mission && job.mission.toLowerCase().includes('deliver'));
     }).length;
 
-    const tutoringCount = completedAcceptedJobs.filter(job => {
+    const tutoringCount = allCompletedJobs.filter(job => {
         return job.serviceType === 'tutoring' || 
                (job.mission && job.mission.toLowerCase().includes('tutor'));
     }).length;
 
-    const movingCount = completedAcceptedJobs.filter(job => {
+    const movingCount = allCompletedJobs.filter(job => {
         return job.serviceType === 'moving' || 
                (job.mission && (job.mission.toLowerCase().includes('move') || 
                 job.mission.toLowerCase().includes('transport')));
@@ -95,14 +97,19 @@ if (typeof window !== 'undefined') {
 
 // Language settings
 const languageSelect = document.getElementById('language-select');
-const savedLanguage = localStorage.getItem('language') || 'en';
-languageSelect.value = savedLanguage;
+if (languageSelect) {
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    languageSelect.value = savedLanguage;
 
-languageSelect.addEventListener('change', function() {
-    localStorage.setItem('language', this.value);
-    // In a real app, you'd reload translations here
-    alert('Language preference saved!');
-});
+    languageSelect.addEventListener('change', function() {
+        if (window.Settings) {
+            window.Settings.setLanguage(this.value);
+        } else {
+            localStorage.setItem('language', this.value);
+            window.location.reload();
+        }
+    });
+}
 
 // Font size settings
 const fontSizeInput = document.getElementById('font-size-input');

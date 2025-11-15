@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/request.css">
+    <script src="../scripts/settings.js"></script>
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
@@ -18,17 +19,17 @@
             <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page">Feed</button>
-        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page">My Order</button>
-        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page">Profile</button>
-        <button class="nav-button active" onclick="window.location.href='request.html'" aria-label="Go to Request Page" aria-current="page">Request Page</button>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button active" onclick="window.location.href='request.html'" aria-label="Go to Request Page" aria-current="page" data-i18n="nav.request">Request Page</button>
     </nav>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="page-header">
-            <h1 class="page-title">Create Request</h1>
-            <p class="page-subtitle">Post a new job request for The Hive community</p>
+            <h1 class="page-title" data-i18n="request.title">Create Request</h1>
+            <p class="page-subtitle" data-i18n="request.subtitle">Post a new job request for The Hive community</p>
         </div>
 
         <section class="request-card" aria-labelledby="request-form-heading">
@@ -117,12 +118,8 @@
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="window.location.href='feed.html'">
-                        Return
-                    </button>
-                    <button type="submit" class="btn btn-primary" id="submit-btn">
-                        Submit Request
-                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='feed.html'" data-i18n="common.return">Return</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="request.submitRequest">Submit Request</button>
                 </div>
             </form>
         </section>

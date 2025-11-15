@@ -144,8 +144,8 @@ form.addEventListener('submit', function(e) {
     // Here you would typically send this to your backend
     console.log('Request submitted:', formData);
 
-    // Show success message
-    alert('Request submitted successfully! Your job request has been posted to the feed.');
+    // Show success animation
+    showRequestSubmittedAnimation();
 
     // Reset form
     form.reset();
@@ -158,6 +158,36 @@ form.addEventListener('submit', function(e) {
 function getRequestedJobs() {
     const stored = localStorage.getItem('requestedJobs');
     return stored ? JSON.parse(stored) : [];
+}
+
+// Show success animation when request is submitted
+function showRequestSubmittedAnimation() {
+    const notification = document.createElement('div');
+    notification.className = 'request-submitted-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">✓</div>
+            <div class="notification-text">
+                <div class="notification-title">Request Submitted!</div>
+                <div class="notification-message">Your job request has been posted to the feed.</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.add('hide');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 2500);
 }
 
 // Set minimum date to today (wait for DOM to be ready)

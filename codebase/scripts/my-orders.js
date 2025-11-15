@@ -138,13 +138,18 @@ function renderAcceptedJobs() {
                 </div>
             ` : ''}
             <div class="order-actions">
-                <button class="btn btn-complete" onclick="completeAcceptedJob('${jobIdentifier}')" aria-label="Mark this accepted order as complete">
-                    Complete Order
+                <button class="btn btn-complete" onclick="completeAcceptedJob('${jobIdentifier}')" aria-label="Mark this accepted order as complete" data-i18n="orders.completeOrder">
+                    ${window.Settings ? window.Settings.t('orders.completeOrder') : 'Complete Order'}
                 </button>
             </div>
         `;
 
         container.appendChild(card);
+        
+        // Apply translations to dynamically created content
+        if (window.Settings) {
+            window.Settings.applyLanguage();
+        }
     });
 }
 
@@ -199,13 +204,18 @@ function renderRequestedJobs() {
                 </div>
             ` : ''}
             <div class="order-actions">
-                <button class="btn btn-complete" onclick="completeRequestedJob('${jobId}')" aria-label="Mark this requested order as complete">
-                    Complete Order
+                <button class="btn btn-complete" onclick="completeRequestedJob('${jobId}')" aria-label="Mark this requested order as complete" data-i18n="orders.completeOrder">
+                    ${window.Settings ? window.Settings.t('orders.completeOrder') : 'Complete Order'}
                 </button>
             </div>
         `;
 
         container.appendChild(card);
+        
+        // Apply translations to dynamically created content
+        if (window.Settings) {
+            window.Settings.applyLanguage();
+        }
     });
 }
 

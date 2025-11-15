@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/index.css">
+    <script src="../scripts/settings.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -24,13 +25,13 @@
     <!-- Sign-in card -->
     <div class="signin-container">
         <main class="signin-card" id="main-content">
-            <h1 class="signin-title">Sign In</h1>
-            <p class="signin-subtitle">Welcome to The Hive!</p>
+            <h1 class="signin-title" data-i18n="index.signIn">Sign In</h1>
+            <p class="signin-subtitle" data-i18n="index.welcome">Welcome to The Hive!</p>
 
             <form id="signin-form" aria-label="Sign in form">
                 <!-- Email input with domain dropdown -->
                 <div class="form-group">
-                    <label class="mdc-floating-label" for="email-input">Email</label>
+                    <label class="mdc-floating-label" for="email-input" data-i18n="index.email">Email</label>
                     <div class="email-container">
                         <input 
                             type="text" 
@@ -52,7 +53,7 @@
 
                 <!-- Password input -->
                 <div class="form-group">
-                    <label class="mdc-floating-label" for="password-input">Password</label>
+                    <label class="mdc-floating-label" for="password-input" data-i18n="index.password">Password</label>
                     <input 
                         type="password" 
                         id="password-input" 
@@ -66,9 +67,7 @@
                 </div>
 
                 <!-- Sign in button -->
-                <button type="submit" class="mdc-button" id="signin-button" aria-label="Sign in to The Hive">
-                    Sign In
-                </button>
+                <button type="submit" class="mdc-button" id="signin-button" aria-label="Sign in to The Hive" data-i18n="index.signIn">Sign In</button>
             </form>
         </main>
     </div>
