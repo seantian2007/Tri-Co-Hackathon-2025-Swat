@@ -1,14 +1,6 @@
-# :zap: :computer: :zap: Tri-Co Hackathon 2025 :zap: :computer: :zap:
-
-*We recommend that you use this repository as a template, then input your code - if you are all trying to work on the code simultaneously in GitHub, please create branches for each individual working on the code to prevent conflicts. However, please use the system that works best for your group* 
-
-To get started with Github basics, please visit [instructions here](GitHub-Tutorial/Instructions.md)
-
-This is a sample submission repository for Tri-Co Hackathon 2025. You can use this repo as a template for your repository, or create your own repo and add this README.md file with the following information about your team
-
 ### Team Name
 
-*Your name here! & best way to contact you all during the Hack*
+The Hiveüêù
 
 ### Team Members
 
@@ -36,7 +28,7 @@ Students within the college community often need assistance with various tasks‚Ä
 
 ### Intended Users
 
-**Any Student**
+**Any Student!**
 
 ---
 
@@ -96,7 +88,7 @@ https://docs.google.com/presentation/d/1bhgJ6C0O76cG4eNa5Zip8DvMHc5f1PwG1be5tVRc
 
 ## License
 
-This repository includes an [unlicense](http://unlicense.org/) statement. 
+ This repository includes an [unlicense](http://unlicense.org/) statement. 
 ---
 
 ## Acknowledgments
