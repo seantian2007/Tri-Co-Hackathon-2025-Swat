@@ -1,7 +1,22 @@
 body {
-    background: #F5F5F5;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
     display: flex;
     min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px),
+        repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Orders Container */
@@ -61,11 +76,11 @@ body {
 
 .order-price {
     font-size: 20px;
-    font-weight: 500;
-    color: #1976D2;
+    font-weight: 600;
+    color: #FF8F00;
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 2px solid rgba(255, 179, 0, 0.3);
 }
 
 .time-info {
@@ -74,8 +89,9 @@ body {
     gap: 8px;
     margin-top: 12px;
     padding: 12px;
-    background: rgba(25, 118, 210, 0.04);
-    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(255, 236, 179, 0.3) 0%, rgba(255, 224, 130, 0.3) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 179, 0, 0.2);
 }
 
 .time-item {

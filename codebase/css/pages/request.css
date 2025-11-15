@@ -1,7 +1,22 @@
 body {
-    background: #F5F5F5;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
     display: flex;
     min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px),
+        repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .main-content {
@@ -16,10 +31,11 @@ body {
 /* Request Form Card */
 .request-card {
     background: #FFFFFF;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
     padding: 32px;
     margin-bottom: 24px;
+    border: 1px solid rgba(255, 179, 0, 0.2);
 }
 
 .mdc-text-field {

@@ -11,14 +11,18 @@
 
 .page-title {
     font-size: 34px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.87);
+    font-weight: 600;
+    background: linear-gradient(135deg, #FF8F00 0%, #FFB300 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 8px;
 }
 
 .page-subtitle {
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.54);
+    color: #FF8F00;
+    font-weight: 500;
 }
 
 /* Responsive */

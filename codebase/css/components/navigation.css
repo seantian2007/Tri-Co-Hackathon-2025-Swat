@@ -1,12 +1,42 @@
 /* Left Navigation Sidebar */
 .nav-sidebar {
     width: 240px;
-    background: #FFFFFF;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFECB3 100%);
+    box-shadow: 2px 0 8px rgba(255, 179, 0, 0.2);
     padding: 24px 0;
     position: fixed;
     height: 100vh;
     z-index: 100;
+    border-right: 3px solid #FFB300;
+}
+
+/* Navigation Branding */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 179, 0, 0.3);
+}
+
+.nav-logo {
+    font-size: 32px;
+    animation: buzz 2s ease-in-out infinite;
+}
+
+@keyframes buzz {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-3px) rotate(-5deg); }
+    75% { transform: translateY(-3px) rotate(5deg); }
+}
+
+.nav-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF8F00;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(255, 179, 0, 0.3);
 }
 
 .nav-button {
@@ -27,12 +57,14 @@
 }
 
 .nav-button:hover {
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(255, 179, 0, 0.15);
+    color: #FF8F00;
 }
 
 .nav-button.active {
-    background: rgba(25, 118, 210, 0.08);
-    color: #1976D2;
+    background: rgba(255, 179, 0, 0.25);
+    color: #FF8F00;
+    font-weight: 600;
 }
 
 .nav-button.active::before {
@@ -41,8 +73,9 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: #1976D2;
+    width: 4px;
+    background: linear-gradient(180deg, #FFB300 0%, #FF8F00 100%);
+    box-shadow: 0 0 8px rgba(255, 179, 0, 0.5);
 }
 
 /* Responsive */
