@@ -12,9 +12,10 @@ This is a sample submission repository for Tri-Co Hackathon 2025. You can use th
 
 ### Team Members
 
-- Teammate 1, School
-- Teammate 2, School
-- Teammate 3, School
+- Sean Tian, Swarthmore
+- Sean Zhu, Swarthmore
+- Lin Yu, Swarthmore
+- Alex Lyu, Swarthmore
 
 ### Project Description
 
