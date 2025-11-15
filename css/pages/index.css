@@ -12,7 +12,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    filter: blur(8px);
+    filter: blur(3px);
     z-index: 0;
 }
 
@@ -40,15 +40,15 @@ body {
 }
 
 .section-swarthmore {
-    background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=600&fit=crop');
+    background-image: url('../../images/swarthmore.webp');
 }
 
 .section-haverford {
-    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop');
+    background-image: url('../../images/haverford.jpeg');
 }
 
 .section-brynmawr {
-    background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop');
+    background-image: url('../../images/Bryn-Mawr-College.jpg');
 }
 
 /* Sign-in card container */

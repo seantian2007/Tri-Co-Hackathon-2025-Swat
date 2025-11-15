@@ -1,7 +1,7 @@
 body {
     background: #F5F5F5;
+    display: flex;
     min-height: 100vh;
-    padding: 24px;
 }
 
 .main-content {
@@ -39,10 +39,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 12px;
-    }
-
     .request-card {
         padding: 16px;
     }

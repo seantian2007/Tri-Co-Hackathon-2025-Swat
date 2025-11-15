@@ -122,6 +122,20 @@ fontSizeInput.addEventListener('change', function() {
     document.body.style.fontSize = size + 'px';
 });
 
+// Logout functionality
+document.getElementById('logout-button').addEventListener('click', function() {
+    // Clear all user data from localStorage
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('profilePicture');
+    localStorage.removeItem('acceptedJobs');
+    localStorage.removeItem('requestedJobs');
+    localStorage.removeItem('language');
+    localStorage.removeItem('fontSize');
+    
+    // Redirect to sign-in page
+    window.location.href = 'index.html';
+});
+
 // Initialize
 loadUserInfo();
 loadProfilePicture();

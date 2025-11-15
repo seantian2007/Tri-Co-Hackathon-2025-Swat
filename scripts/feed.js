@@ -129,9 +129,22 @@ const sampleJobs = [
     }
 ];
 
+// Get user's college from localStorage
+function getUserCollege() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    return userInfo.college || 'swarthmore'; // Default to swarthmore if not set
+}
+
+// Filter jobs by user's college
+function filterJobsByCollege(allJobs) {
+    const userCollege = getUserCollege();
+    return allJobs.filter(job => job.college === userCollege);
+}
+
 // Merge sample jobs with requested jobs from localStorage
 const requestedJobs = convertRequestedJobsToFeedFormat();
-const jobs = [...sampleJobs, ...requestedJobs];
+const allJobs = [...sampleJobs, ...requestedJobs];
+const jobs = filterJobsByCollege(allJobs);
 
 let currentJobId = null;
 
@@ -140,7 +153,21 @@ function renderJobs() {
     const container = document.getElementById('jobs-container');
     container.innerHTML = '';
 
-    jobs.forEach(job => {
+    // Re-filter jobs in case user info changed
+    const filteredJobs = filterJobsByCollege(allJobs);
+
+    if (filteredJobs.length === 0) {
+        container.innerHTML = `
+            <div class="job-card" style="text-align: center; padding: 48px 24px;">
+                <div style="font-size: 16px; color: rgba(0, 0, 0, 0.54);">
+                    No jobs available for your school at this time.
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    filteredJobs.forEach(job => {
         const jobCard = document.createElement('div');
         jobCard.className = 'job-card';
         jobCard.onclick = () => openModal(job.id);
@@ -169,7 +196,8 @@ function renderJobs() {
 
 // Open modal with job details
 function openModal(jobId) {
-    const job = jobs.find(j => j.id === jobId);
+    const filteredJobs = filterJobsByCollege(allJobs);
+    const job = filteredJobs.find(j => j.id === jobId);
     if (!job) return;
 
     currentJobId = jobId;
@@ -200,7 +228,8 @@ function closeModal() {
 function takeJob() {
     if (!currentJobId) return;
 
-    const job = jobs.find(j => j.id === currentJobId);
+    const filteredJobs = filterJobsByCollege(allJobs);
+    const job = filteredJobs.find(j => j.id === currentJobId);
     if (job) {
         // Save to localStorage
         const acceptedJob = {
@@ -216,10 +245,10 @@ function takeJob() {
         
         alert(`You have successfully accepted the job: "${job.mission}"!\n\nYou will be contacted with further details.`);
         
-        // Remove job from list (in a real app, this would update the backend)
-        const index = jobs.findIndex(j => j.id === currentJobId);
+        // Remove job from allJobs list (in a real app, this would update the backend)
+        const index = allJobs.findIndex(j => j.id === currentJobId);
         if (index > -1) {
-            jobs.splice(index, 1);
+            allJobs.splice(index, 1);
             renderJobs();
         }
         

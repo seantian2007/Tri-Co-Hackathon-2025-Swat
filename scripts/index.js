@@ -60,10 +60,20 @@ document.getElementById('signin-form').addEventListener('submit', function(e) {
     const password = passwordInput.value;
     const fullEmail = email + domain;
     
+    // Extract college from domain
+    const collegeMap = {
+        '@swarthmore.edu': { college: 'swarthmore', collegeName: 'Swarthmore' },
+        '@haverford.edu': { college: 'haverford', collegeName: 'Haverford' },
+        '@brynmawr.edu': { college: 'brynmawr', collegeName: 'Bryn Mawr' }
+    };
+    const collegeInfo = collegeMap[domain] || { college: 'swarthmore', collegeName: 'Swarthmore' };
+    
     // Save user info to localStorage
     const userInfo = {
         name: email.charAt(0).toUpperCase() + email.slice(1) || 'User',
-        email: fullEmail
+        email: fullEmail,
+        college: collegeInfo.college,
+        collegeName: collegeInfo.collegeName
     };
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
     

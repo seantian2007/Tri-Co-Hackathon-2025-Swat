@@ -178,6 +178,47 @@ body {
     width: 80px;
 }
 
+/* Logout Section */
+.logout-section {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.btn-logout {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    background: #D32F2F;
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+}
+
+.btn-logout:hover {
+    background: #C62828;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-logout:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .profile-header {

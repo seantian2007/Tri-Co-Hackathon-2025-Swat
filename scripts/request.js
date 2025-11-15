@@ -160,8 +160,29 @@ function getRequestedJobs() {
     return stored ? JSON.parse(stored) : [];
 }
 
-// Set minimum date to today
+// Set minimum date to today (wait for DOM to be ready)
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    const startDateInput = document.getElementById('start-date');
+    const endDateInput = document.getElementById('end-date');
+    
+    if (startDateInput) {
+        startDateInput.setAttribute('min', today);
+    }
+    if (endDateInput) {
+        endDateInput.setAttribute('min', today);
+    }
+});
+
+// Also set immediately in case DOM is already loaded
 const today = new Date().toISOString().split('T')[0];
-document.getElementById('start-date').setAttribute('min', today);
-document.getElementById('end-date').setAttribute('min', today);
+const startDateInput = document.getElementById('start-date');
+const endDateInput = document.getElementById('end-date');
+
+if (startDateInput) {
+    startDateInput.setAttribute('min', today);
+}
+if (endDateInput) {
+    endDateInput.setAttribute('min', today);
+}
 
