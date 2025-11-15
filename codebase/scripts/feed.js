@@ -200,6 +200,11 @@ function renderJobs() {
         `;
 
         container.appendChild(jobCard);
+        
+        // Apply translations to dynamically created content
+        if (window.Settings) {
+            window.Settings.applyLanguage();
+        }
     });
 }
 

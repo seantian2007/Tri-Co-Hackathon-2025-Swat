@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/my-orders.css">
+    <script src="../scripts/settings.js"></script>
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
@@ -18,25 +19,25 @@
             <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page">Feed</button>
-        <button class="nav-button active" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" aria-current="page">My Order</button>
-        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page">Profile</button>
-        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page">Request Page</button>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button active" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" aria-current="page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page" data-i18n="nav.request">Request Page</button>
     </nav>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="page-header">
-            <h1 class="page-title">My Orders</h1>
-            <p class="page-subtitle">View your accepted and requested jobs</p>
+            <h1 class="page-title" data-i18n="orders.title">My Orders</h1>
+            <p class="page-subtitle" data-i18n="orders.subtitle">View your accepted and requested jobs</p>
         </div>
 
         <div class="orders-container">
             <!-- Accepted Jobs Section -->
             <section aria-labelledby="accepted-jobs-heading">
                 <div class="section-header">
-                    <h2 class="section-title" id="accepted-jobs-heading">Accepted Jobs</h2>
-                    <p class="section-subtitle">Jobs you have taken</p>
+                    <h2 class="section-title" id="accepted-jobs-heading" data-i18n="orders.accepted">Accepted Jobs</h2>
+                    <p class="section-subtitle" data-i18n="orders.acceptedSubtitle">Jobs you have taken</p>
                 </div>
                 <div id="accepted-jobs-container" role="list" aria-label="List of accepted jobs">
                     <!-- Accepted jobs will be inserted here -->
@@ -46,8 +47,8 @@
             <!-- Requested Jobs Section -->
             <section aria-labelledby="requested-jobs-heading">
                 <div class="section-header">
-                    <h2 class="section-title" id="requested-jobs-heading">Requested Jobs</h2>
-                    <p class="section-subtitle">Jobs you have posted</p>
+                    <h2 class="section-title" id="requested-jobs-heading" data-i18n="orders.requested">Requested Jobs</h2>
+                    <p class="section-subtitle" data-i18n="orders.requestedSubtitle">Jobs you have posted</p>
                 </div>
                 <div id="requested-jobs-container" role="list" aria-label="List of requested jobs">
                     <!-- Requested jobs will be inserted here -->

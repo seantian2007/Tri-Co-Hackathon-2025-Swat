@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/feed.css">
+    <script src="../scripts/settings.js"></script>
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
@@ -18,17 +19,17 @@
             <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button active" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" aria-current="page">Feed</button>
-        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page">My Order</button>
-        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page">Profile</button>
-        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page">Request Page</button>
+        <button class="nav-button active" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" aria-current="page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page" data-i18n="nav.request">Request Page</button>
     </nav>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="page-header">
-            <h1 class="page-title">Available Jobs</h1>
-            <p class="page-subtitle">Browse and accept jobs from The Hive community</p>
+            <h1 class="page-title" data-i18n="feed.title">Available Jobs</h1>
+            <p class="page-subtitle" data-i18n="feed.subtitle">Browse and accept jobs from The Hive community</p>
         </div>
 
         <!-- Jobs List -->
@@ -70,8 +71,8 @@
                 </dl>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeModal()" aria-label="Cancel and close modal">Cancel</button>
-                <button class="btn btn-primary" onclick="takeJob()" aria-label="Accept this job">Take Job</button>
+                <button class="btn btn-secondary" onclick="closeModal()" aria-label="Cancel and close modal" data-i18n="common.cancel">Cancel</button>
+                <button class="btn btn-primary" onclick="takeJob()" aria-label="Accept this job" data-i18n="feed.takeJob">Take Job</button>
             </div>
         </div>
     </div>
