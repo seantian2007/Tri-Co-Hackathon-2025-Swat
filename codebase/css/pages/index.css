@@ -40,15 +40,15 @@ body {
 }
 
 .section-swarthmore {
-    background-image: url('../../images/swarthmore.webp');
+    background-image: url('../../../assets/images/swarthmore.webp');
 }
 
 .section-haverford {
-    background-image: url('../../images/haverford.jpeg');
+    background-image: url('../../../assets/images/haverford.jpeg');
 }
 
 .section-brynmawr {
-    background-image: url('../../images/Bryn-Mawr-College.jpg');
+    background-image: url('../../../assets/images/Bryn-Mawr-College.jpg');
 }
 
 /* Sign-in card container */
