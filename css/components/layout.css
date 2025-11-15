@@ -1,0 +1,38 @@
+/* Main Content */
+.main-content {
+    margin-left: 240px;
+    flex: 1;
+    padding: 24px;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-size: 34px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 200px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        margin-left: 180px;
+        padding: 12px;
+    }
+}
+

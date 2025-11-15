@@ -1,0 +1,50 @@
+body {
+    background: #F5F5F5;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.main-content {
+    max-width: 800px;
+    margin-right: auto;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+/* Request Form Card */
+.request-card {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.mdc-text-field {
+    width: 100%;
+    padding: 12px 0;
+}
+
+.mdc-text-field:focus {
+    padding-bottom: 11px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .request-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .request-card {
+        padding: 16px;
+    }
+}
+

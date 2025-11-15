@@ -1,0 +1,60 @@
+/* Left Navigation Sidebar */
+.nav-sidebar {
+    width: 240px;
+    background: #FFFFFF;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-button.active {
+    background: rgba(25, 118, 210, 0.08);
+    color: #1976D2;
+}
+
+.nav-button.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #1976D2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-sidebar {
+        width: 180px;
+    }
+}
+
