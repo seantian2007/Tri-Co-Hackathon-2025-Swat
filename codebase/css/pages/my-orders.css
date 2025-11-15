@@ -24,6 +24,8 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Section Header */

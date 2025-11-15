@@ -36,6 +36,8 @@ body::before {
     padding: 32px;
     margin-bottom: 24px;
     border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .mdc-text-field {

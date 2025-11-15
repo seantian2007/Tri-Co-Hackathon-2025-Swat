@@ -31,6 +31,8 @@ body::before {
     padding: 32px;
     margin-bottom: 24px;
     border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .profile-header {
@@ -120,6 +122,8 @@ body::before {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Achievements Section */
@@ -130,6 +134,8 @@ body::before {
     padding: 32px;
     margin-bottom: 24px;
     border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .section-title {
@@ -152,6 +158,8 @@ body::before {
     box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
     padding: 32px;
     border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .settings-item {
@@ -208,6 +216,8 @@ body::before {
     margin-top: 24px;
     text-align: center;
     border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-logout {

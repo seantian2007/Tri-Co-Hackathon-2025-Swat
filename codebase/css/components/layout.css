@@ -3,10 +3,14 @@
     margin-left: 240px;
     flex: 1;
     padding: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 .page-header {
     margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
 }
 
 .page-title {
