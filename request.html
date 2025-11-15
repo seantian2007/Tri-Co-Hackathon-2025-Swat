@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Page - Tri-Co</title>
+    
+    <!-- Google Fonts - Material Design Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #F5F5F5;
+            color: rgba(0, 0, 0, 0.87);
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        /* Left Navigation Sidebar */
+        .nav-sidebar {
+            width: 240px;
+            background: #FFFFFF;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-button {
+            display: block;
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-button.active {
+            background: rgba(25, 118, 210, 0.08);
+            color: #1976D2;
+        }
+
+        .nav-button.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1976D2;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 240px;
+            max-width: 800px;
+            margin-right: auto;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 34px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.87);
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        /* Request Form Card */
+        .request-card {
+            background: #FFFFFF;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.54);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-label.required::after {
+            content: ' *';
+            color: #D32F2F;
+        }
+
+        .form-label.optional::after {
+            content: ' (optional)';
+            color: rgba(0, 0, 0, 0.38);
+            text-transform: none;
+            font-weight: 400;
+        }
+
+        /* Material Design Input */
+        .mdc-text-field {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+            background: transparent;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: rgba(0, 0, 0, 0.87);
+            transition: border-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            outline: none;
+        }
+
+        .mdc-text-field:focus {
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 11px;
+        }
+
+        .mdc-text-field::placeholder {
+            color: rgba(0, 0, 0, 0.38);
+        }
+
+        .mdc-select {
+            width: 100%;
+            padding: 12px 48px 12px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.23);
+            border-radius: 8px;
+            background: #FFFFFF;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: rgba(0, 0, 0, 0.87);
+            cursor: pointer;
+            appearance: none;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        .mdc-select:hover {
+            border-color: rgba(25, 118, 210, 0.5);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            background-color: #FAFAFA;
+        }
+
+        .mdc-select:focus {
+            border-color: #1976D2;
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12), 0 2px 6px rgba(0, 0, 0, 0.12);
+            background-color: #FFFFFF;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231976D2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+
+        .mdc-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.42);
+            border-radius: 4px;
+            background: transparent;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: rgba(0, 0, 0, 0.87);
+            resize: vertical;
+            transition: border-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            outline: none;
+        }
+
+        .mdc-textarea:focus {
+            border: 2px solid #1976D2;
+            padding: 11px;
+        }
+
+        .mdc-textarea::placeholder {
+            color: rgba(0, 0, 0, 0.38);
+        }
+
+        /* Date/Time Input Container */
+        .datetime-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .datetime-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .datetime-label {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-bottom: 4px;
+        }
+
+        .datetime-input {
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.42);
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: rgba(0, 0, 0, 0.87);
+            transition: border-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            outline: none;
+        }
+
+        .datetime-input:focus {
+            border: 2px solid #1976D2;
+            padding: 11px;
+        }
+
+        /* Error Message */
+        .error-message {
+            font-size: 12px;
+            color: #D32F2F;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error .mdc-text-field,
+        .form-group.error .mdc-select,
+        .form-group.error .datetime-input {
+            border-color: #D32F2F;
+        }
+
+        .form-group.error .mdc-select {
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12), 0 2px 6px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Helper Text */
+        .helper-text {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-top: 4px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 100px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-primary {
+            background: #1976D2;
+            color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #1565C0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:disabled {
+            background: rgba(0, 0, 0, 0.12);
+            color: rgba(0, 0, 0, 0.26);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                padding: 16px;
+            }
+
+            .request-card {
+                padding: 24px;
+            }
+
+            .datetime-container {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .nav-sidebar {
+                width: 180px;
+            }
+
+            .main-content {
+                margin-left: 180px;
+            }
+
+            .request-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Navigation Sidebar -->
+    <nav class="nav-sidebar">
+        <button class="nav-button" onclick="window.location.href='feed.html'">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'">My Order</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'">Profile</button>
+        <button class="nav-button active" onclick="window.location.href='request.html'">Request Page</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Create Request</h1>
+            <p class="page-subtitle">Post a new job request for the Tri-Co community</p>
+        </div>
+
+        <div class="request-card">
+            <form id="request-form">
+                <!-- Service Type -->
+                <div class="form-group" id="service-type-group">
+                    <label class="form-label required" for="service-type">Service Type</label>
+                    <select id="service-type" class="mdc-select" required>
+                        <option value="">Select a service type</option>
+                        <option value="delivery">Delivery</option>
+                        <option value="tutoring">Tutoring</option>
+                        <option value="moving">Moving</option>
+                    </select>
+                    <div class="error-message">Please select a service type</div>
+                </div>
+
+                <!-- Fee -->
+                <div class="form-group" id="fee-group">
+                    <label class="form-label required" for="fee">Fee (Swat Points)</label>
+                    <select id="fee" class="mdc-select" required>
+                        <option value="">Select fee amount</option>
+                    </select>
+                    <div class="helper-text">Minimum 2 Swat Points</div>
+                    <div class="error-message">Please select a fee (minimum 2 points)</div>
+                </div>
+
+                <!-- College -->
+                <div class="form-group" id="college-group">
+                    <label class="form-label required" for="college">College</label>
+                    <select id="college" class="mdc-select" required>
+                        <option value="">Select your college</option>
+                        <option value="swarthmore">Swarthmore</option>
+                        <option value="haverford">Haverford</option>
+                        <option value="brynmawr">Bryn Mawr</option>
+                    </select>
+                    <div class="error-message">Please select your college</div>
+                </div>
+
+                <!-- Destination -->
+                <div class="form-group" id="destination-group">
+                    <label class="form-label required" for="destination">Destination</label>
+                    <input 
+                        type="text" 
+                        id="destination" 
+                        class="mdc-text-field" 
+                        placeholder="Enter destination address or location"
+                        required
+                    />
+                    <div class="error-message">Please enter a destination</div>
+                </div>
+
+                <!-- Time Frame -->
+                <div class="form-group" id="timeframe-group">
+                    <label class="form-label required">Time Frame</label>
+                    <div class="datetime-container">
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="start-date">Start Date</label>
+                            <input type="date" id="start-date" class="datetime-input" required />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="start-time">Start Time</label>
+                            <input type="time" id="start-time" class="datetime-input" required />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="end-date">End Date</label>
+                            <input type="date" id="end-date" class="datetime-input" required />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="end-time">End Time</label>
+                            <input type="time" id="end-time" class="datetime-input" required />
+                        </div>
+                    </div>
+                    <div class="error-message">Please select a complete time frame</div>
+                </div>
+
+                <!-- More Details -->
+                <div class="form-group" id="details-group">
+                    <label class="form-label optional" for="more-details">More Details</label>
+                    <textarea 
+                        id="more-details" 
+                        class="mdc-textarea" 
+                        placeholder="Provide additional information about your request (optional)"
+                    ></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='feed.html'">
+                        Return
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Populate fee dropdown (2-20 Swat Points)
+        const feeSelect = document.getElementById('fee');
+        for (let i = 2; i <= 20; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `${i} Swat Point${i !== 1 ? 's' : ''}`;
+            feeSelect.appendChild(option);
+        }
+
+        // Form validation
+        const form = document.getElementById('request-form');
+        const requiredFields = {
+            'service-type': document.getElementById('service-type-group'),
+            'fee': document.getElementById('fee-group'),
+            'destination': document.getElementById('destination-group'),
+            'start-date': document.getElementById('timeframe-group'),
+            'start-time': document.getElementById('timeframe-group'),
+            'end-date': document.getElementById('timeframe-group'),
+            'end-time': document.getElementById('timeframe-group')
+        };
+
+        function validateField(fieldId) {
+            const field = document.getElementById(fieldId);
+            const group = requiredFields[fieldId];
+            
+            if (!field || !group) return true;
+
+            if (fieldId.startsWith('start-') || fieldId.startsWith('end-')) {
+                // Validate time frame as a group
+                const startDate = document.getElementById('start-date').value;
+                const startTime = document.getElementById('start-time').value;
+                const endDate = document.getElementById('end-date').value;
+                const endTime = document.getElementById('end-time').value;
+
+                if (!startDate || !startTime || !endDate || !endTime) {
+                    group.classList.add('error');
+                    return false;
+                }
+
+                // Check if end is after start
+                const start = new Date(`${startDate}T${startTime}`);
+                const end = new Date(`${endDate}T${endTime}`);
+
+                if (end <= start) {
+                    group.classList.add('error');
+                    group.querySelector('.error-message').textContent = 'End time must be after start time';
+                    return false;
+                }
+
+                group.classList.remove('error');
+                return true;
+            }
+
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                group.classList.add('error');
+                return false;
+            }
+
+            // Special validation for fee (minimum 2)
+            if (fieldId === 'fee' && field.value) {
+                const feeValue = parseInt(field.value);
+                if (feeValue < 2) {
+                    group.classList.add('error');
+                    return false;
+                }
+            }
+
+            group.classList.remove('error');
+            return true;
+        }
+
+        // Add college to required fields
+        requiredFields['college'] = document.getElementById('college-group');
+
+        // Real-time validation
+        Object.keys(requiredFields).forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.addEventListener('blur', () => validateField(fieldId));
+                field.addEventListener('change', () => validateField(fieldId));
+            }
+        });
+
+        // Validate time frame fields together
+        ['start-date', 'start-time', 'end-date', 'end-time'].forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.addEventListener('change', () => {
+                    validateField('start-date');
+                });
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate all required fields
+            let isValid = true;
+            Object.keys(requiredFields).forEach(fieldId => {
+                if (!validateField(fieldId)) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                // Scroll to first error
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            // Collect form data
+            const collegeValue = document.getElementById('college').value;
+            const collegeNames = {
+                'swarthmore': 'Swarthmore',
+                'haverford': 'Haverford',
+                'brynmawr': 'Bryn Mawr'
+            };
+
+            const formData = {
+                serviceType: document.getElementById('service-type').value,
+                fee: document.getElementById('fee').value,
+                college: collegeValue,
+                collegeName: collegeNames[collegeValue],
+                destination: document.getElementById('destination').value,
+                timeFrame: {
+                    startDate: document.getElementById('start-date').value,
+                    startTime: document.getElementById('start-time').value,
+                    endDate: document.getElementById('end-date').value,
+                    endTime: document.getElementById('end-time').value
+                },
+                moreDetails: document.getElementById('more-details').value,
+                requestedAt: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            const requestedJobs = getRequestedJobs();
+            requestedJobs.push(formData);
+            localStorage.setItem('requestedJobs', JSON.stringify(requestedJobs));
+
+            // Here you would typically send this to your backend
+            console.log('Request submitted:', formData);
+
+            // Show success message
+            alert('Request submitted successfully! Your job request has been posted to the feed.');
+
+            // Reset form
+            form.reset();
+
+            // Optionally redirect to feed
+            // window.location.href = 'feed.html';
+        });
+
+        // Get requested jobs from localStorage
+        function getRequestedJobs() {
+            const stored = localStorage.getItem('requestedJobs');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('start-date').setAttribute('min', today);
+        document.getElementById('end-date').setAttribute('min', today);
+    </script>
+</body>
+</html>
+
