@@ -51,52 +51,46 @@ document.getElementById('profile-picture-input').addEventListener('change', func
 
 // Calculate stats
 function calculateStats() {
-    // Get accepted jobs (these are jobs the user took)
-    const acceptedJobs = JSON.parse(localStorage.getItem('acceptedJobs') || '[]');
+    // Get all accepted jobs (including completed)
+    const allAcceptedJobs = JSON.parse(localStorage.getItem('acceptedJobs') || '[]');
     
-    // Get requested jobs (these are jobs the user posted)
-    const requestedJobs = JSON.parse(localStorage.getItem('requestedJobs') || '[]');
+    // Get all requested jobs (including completed)
+    const allRequestedJobs = JSON.parse(localStorage.getItem('requestedJobs') || '[]');
 
-    // For now, we'll consider accepted jobs as "delivered" if they have a timeFrame that has passed
-    // In a real app, you'd have a separate "completed" status
-    const now = new Date();
-    const deliveredJobs = acceptedJobs.filter(job => {
-        if (job.timeFrame && job.timeFrame.endDate && job.timeFrame.endTime) {
-            try {
-                const dueDate = new Date(`${job.timeFrame.endDate}T${job.timeFrame.endTime}`);
-                return dueDate < now;
-            } catch (e) {
-                return false;
-            }
-        }
-        return false;
-    });
+    // Count completed jobs (both accepted and requested)
+    const completedAcceptedJobs = allAcceptedJobs.filter(job => job.completed === true);
+    const completedRequestedJobs = allRequestedJobs.filter(job => job.completed === true);
+    const totalCompleted = completedAcceptedJobs.length + completedRequestedJobs.length;
 
-    // Count by service type (for requested jobs, use serviceType; for accepted, we'll need to infer or track)
-    const deliveryCount = deliveredJobs.filter(job => {
-        // Check if it's a delivery job (you might need to add serviceType to accepted jobs)
+    // Count by service type for completed accepted jobs
+    const deliveryCount = completedAcceptedJobs.filter(job => {
         return job.serviceType === 'delivery' || 
                (job.mission && job.mission.toLowerCase().includes('deliver'));
     }).length;
 
-    const tutoringCount = deliveredJobs.filter(job => {
+    const tutoringCount = completedAcceptedJobs.filter(job => {
         return job.serviceType === 'tutoring' || 
                (job.mission && job.mission.toLowerCase().includes('tutor'));
     }).length;
 
-    const movingCount = deliveredJobs.filter(job => {
+    const movingCount = completedAcceptedJobs.filter(job => {
         return job.serviceType === 'moving' || 
-               (job.mission && job.mission.toLowerCase().includes('move') || 
-                job.mission.toLowerCase().includes('transport'));
+               (job.mission && (job.mission.toLowerCase().includes('move') || 
+                job.mission.toLowerCase().includes('transport')));
     }).length;
 
     // Update stats
-    document.getElementById('total-completed').textContent = deliveredJobs.length;
-    document.getElementById('total-requested').textContent = requestedJobs.length;
-    document.getElementById('total-delivered').textContent = deliveredJobs.length;
+    document.getElementById('total-completed').textContent = totalCompleted;
+    document.getElementById('total-requested').textContent = allRequestedJobs.length;
+    document.getElementById('total-delivered').textContent = completedAcceptedJobs.length;
     document.getElementById('delivery-count').textContent = deliveryCount;
     document.getElementById('tutoring-count').textContent = tutoringCount;
     document.getElementById('moving-count').textContent = movingCount;
+}
+
+// Export function to be called from other pages
+if (typeof window !== 'undefined') {
+    window.updateProfileStats = calculateStats;
 }
 
 // Language settings

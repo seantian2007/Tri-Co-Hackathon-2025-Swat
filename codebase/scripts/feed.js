@@ -168,9 +168,18 @@ function renderJobs() {
     }
 
     filteredJobs.forEach(job => {
-        const jobCard = document.createElement('div');
+        const jobCard = document.createElement('article');
         jobCard.className = 'job-card';
+        jobCard.setAttribute('role', 'listitem');
+        jobCard.setAttribute('aria-label', `Job: ${job.mission}`);
+        jobCard.setAttribute('tabindex', '0');
         jobCard.onclick = () => openModal(job.id);
+        jobCard.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(job.id);
+            }
+        };
 
         jobCard.innerHTML = `
             <div class="job-college college-${job.college}">${job.collegeName}</div>
@@ -213,13 +222,21 @@ function openModal(jobId) {
     document.getElementById('modal-description').textContent = job.description;
 
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    
+    // Focus on modal close button for accessibility
+    setTimeout(() => {
+        const closeButton = modal.querySelector('.modal-close');
+        if (closeButton) closeButton.focus();
+    }, 100);
 }
 
 // Close modal
 function closeModal() {
     const modal = document.getElementById('job-modal');
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentJobId = null;
 }
@@ -243,7 +260,8 @@ function takeJob() {
         acceptedJobs.push(acceptedJob);
         localStorage.setItem('acceptedJobs', JSON.stringify(acceptedJobs));
         
-        alert(`You have successfully accepted the job: "${job.mission}"!\n\nYou will be contacted with further details.`);
+        // Show success animation
+        showJobAcceptedAnimation(job.mission);
         
         // Remove job from allJobs list (in a real app, this would update the backend)
         const index = allJobs.findIndex(j => j.id === currentJobId);
@@ -260,6 +278,39 @@ function takeJob() {
 function getAcceptedJobs() {
     const stored = localStorage.getItem('acceptedJobs');
     return stored ? JSON.parse(stored) : [];
+}
+
+// Show success animation when job is accepted
+function showJobAcceptedAnimation(jobMission) {
+    // Create success notification element
+    const notification = document.createElement('div');
+    notification.className = 'job-accepted-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">✓</div>
+            <div class="notification-text">
+                <div class="notification-title">Job Accepted!</div>
+                <div class="notification-message">${jobMission}</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        notification.classList.add('hide');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
 }
 
 // Close modal when clicking outside

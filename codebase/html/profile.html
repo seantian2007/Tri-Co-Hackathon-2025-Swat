@@ -13,15 +13,15 @@
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
-    <nav class="nav-sidebar">
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
         <div class="nav-brand">
-            <div class="nav-logo">🐝</div>
+            <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button" onclick="window.location.href='feed.html'">Feed</button>
-        <button class="nav-button" onclick="window.location.href='my-orders.html'">My Order</button>
-        <button class="nav-button active" onclick="window.location.href='profile.html'">Profile</button>
-        <button class="nav-button" onclick="window.location.href='request.html'">Request Page</button>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page">My Order</button>
+        <button class="nav-button active" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" aria-current="page">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page">Request Page</button>
     </nav>
 
     <!-- Main Content -->
@@ -32,68 +32,70 @@
         </div>
 
         <!-- Profile Info Section -->
-        <div class="profile-section">
+        <section class="profile-section" aria-labelledby="profile-heading">
+            <h2 id="profile-heading" class="sr-only">Profile Information</h2>
             <div class="profile-header">
-                <div class="profile-picture-container" onclick="document.getElementById('profile-picture-input').click()">
-                    <div class="profile-picture" id="profile-picture">
-                        <div class="profile-picture-placeholder" id="profile-placeholder">👤</div>
+                <button class="profile-picture-container" onclick="document.getElementById('profile-picture-input').click()" aria-label="Upload profile picture" type="button">
+                    <div class="profile-picture" id="profile-picture" role="img" aria-label="Profile picture">
+                        <div class="profile-picture-placeholder" id="profile-placeholder" aria-hidden="true">👤</div>
                         <img id="profile-image" style="display: none;" alt="Profile Picture">
                     </div>
                     <div class="profile-picture-upload-hint">Click to upload</div>
-                </div>
+                </button>
                 <div class="profile-info">
-                    <div class="profile-name" id="profile-name">User Name</div>
-                    <div class="profile-email" id="profile-email">user@swarthmore.edu</div>
+                    <div class="profile-name" id="profile-name" aria-label="User name">User Name</div>
+                    <div class="profile-email" id="profile-email" aria-label="User email">user@swarthmore.edu</div>
                 </div>
             </div>
-            <input type="file" id="profile-picture-input" class="hidden-file-input" accept="image/*">
-        </div>
+            <input type="file" id="profile-picture-input" class="hidden-file-input" accept="image/*" aria-label="Select profile picture">
+        </section>
 
         <!-- Stats Section -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value" id="total-completed">0</div>
+        <section class="stats-grid" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="sr-only">Statistics</h2>
+            <div class="stat-card" role="article" aria-label="Total completed orders">
+                <div class="stat-value" id="total-completed" aria-live="polite">0</div>
                 <div class="stat-label">Total Completed</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value" id="total-requested">0</div>
+            <div class="stat-card" role="article" aria-label="Total requested orders">
+                <div class="stat-value" id="total-requested" aria-live="polite">0</div>
                 <div class="stat-label">Orders Requested</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value" id="total-delivered">0</div>
+            <div class="stat-card" role="article" aria-label="Total delivered orders">
+                <div class="stat-value" id="total-delivered" aria-live="polite">0</div>
                 <div class="stat-label">Orders Delivered</div>
             </div>
-        </div>
+        </section>
 
         <!-- Achievements Section -->
-        <div class="achievements-section">
-            <h2 class="section-title">Completed Orders by Type</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">📦</div>
-                    <div class="achievement-value" id="delivery-count">0</div>
+        <section class="achievements-section" aria-labelledby="achievements-heading">
+            <h2 class="section-title" id="achievements-heading">Completed Orders by Type</h2>
+            <div class="achievements-grid" role="list">
+                <div class="achievement-card" role="listitem" aria-label="Delivery orders completed">
+                    <div class="achievement-icon" aria-hidden="true">📦</div>
+                    <div class="achievement-value" id="delivery-count" aria-live="polite">0</div>
                     <div class="achievement-label">Delivery</div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">📚</div>
-                    <div class="achievement-value" id="tutoring-count">0</div>
+                <div class="achievement-card" role="listitem" aria-label="Tutoring orders completed">
+                    <div class="achievement-icon" aria-hidden="true">📚</div>
+                    <div class="achievement-value" id="tutoring-count" aria-live="polite">0</div>
                     <div class="achievement-label">Tutoring</div>
                 </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🚚</div>
-                    <div class="achievement-value" id="moving-count">0</div>
-                    <div class="achievement-label">Moving</div>
+                <div class="achievement-card" role="listitem" aria-label="Moving orders completed">
+                    <div class="achievement-icon" aria-hidden="true">🚚</div>
+                    <div class="achievement-value" id="moving-count" aria-live="polite">0</div>
+                    <div class="achievement-label">Others</div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Settings Section -->
-        <div class="settings-section">
-            <h2 class="section-title">Settings</h2>
+        <section class="settings-section" aria-labelledby="settings-heading">
+            <h2 class="section-title" id="settings-heading">Settings</h2>
             <div class="settings-item">
-                <div class="settings-label">Language</div>
+                <label for="language-select" class="settings-label">Language</label>
                 <div class="settings-control">
-                    <select id="language-select" class="settings-select">
+                    <select id="language-select" class="settings-select" aria-label="Select language preference">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
@@ -102,23 +104,24 @@
                 </div>
             </div>
             <div class="settings-item">
-                <div class="settings-label">Font Size</div>
+                <label for="font-size-input" class="settings-label">Font Size</label>
                 <div class="settings-control">
-                    <input type="number" id="font-size-input" class="settings-input" min="12" max="24" value="16">
-                    <span>px</span>
+                    <input type="number" id="font-size-input" class="settings-input" min="12" max="24" value="16" aria-label="Font size in pixels">
+                    <span aria-hidden="true">px</span>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Logout Section -->
-        <div class="logout-section">
-            <button class="btn btn-logout" id="logout-button">
+        <section class="logout-section">
+            <button class="btn btn-logout" id="logout-button" aria-label="Log out of your account">
                 Logout
             </button>
-        </div>
+        </section>
     </main>
 
     <script src="../scripts/profile.js"></script>
 </body>
 </html>
+
 

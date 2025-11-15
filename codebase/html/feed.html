@@ -13,15 +13,15 @@
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
-    <nav class="nav-sidebar">
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
         <div class="nav-brand">
-            <div class="nav-logo">🐝</div>
+            <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button active" onclick="window.location.href='feed.html'">Feed</button>
-        <button class="nav-button" onclick="window.location.href='my-orders.html'">My Order</button>
-        <button class="nav-button" onclick="window.location.href='profile.html'">Profile</button>
-        <button class="nav-button" onclick="window.location.href='request.html'">Request Page</button>
+        <button class="nav-button active" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" aria-current="page">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page">My Order</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page">Request Page</button>
     </nav>
 
     <!-- Main Content -->
@@ -32,44 +32,46 @@
         </div>
 
         <!-- Jobs List -->
-        <div class="jobs-container" id="jobs-container">
+        <section class="jobs-container" id="jobs-container" aria-label="Available jobs list" role="list">
             <!-- Jobs will be dynamically inserted here -->
-        </div>
+        </section>
     </main>
 
     <!-- Job Detail Modal -->
-    <div class="modal" id="job-modal">
+    <div class="modal" id="job-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()"></button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Close job details modal"></button>
             <div class="modal-header">
-                <div class="job-college" id="modal-college"></div>
+                <div class="job-college" id="modal-college" aria-hidden="true"></div>
                 <h2 class="modal-title" id="modal-title"></h2>
             </div>
             <div class="modal-body">
-                <div class="modal-detail-section">
-                    <div class="modal-detail-label">Mission</div>
-                    <div class="modal-detail-value" id="modal-mission"></div>
-                </div>
-                <div class="modal-detail-section">
-                    <div class="modal-detail-label">Destination</div>
-                    <div class="modal-detail-value" id="modal-destination"></div>
-                </div>
-                <div class="modal-detail-section">
-                    <div class="modal-detail-label">Time Needed</div>
-                    <div class="modal-detail-value" id="modal-time"></div>
-                </div>
-                <div class="modal-detail-section">
-                    <div class="modal-detail-label">Price</div>
-                    <div class="modal-detail-value" id="modal-price"></div>
-                </div>
-                <div class="modal-detail-section">
-                    <div class="modal-detail-label">Description</div>
-                    <div class="modal-detail-value" id="modal-description"></div>
-                </div>
+                <dl>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Mission</dt>
+                        <dd class="modal-detail-value" id="modal-mission"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Destination</dt>
+                        <dd class="modal-detail-value" id="modal-destination"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Time Needed</dt>
+                        <dd class="modal-detail-value" id="modal-time"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Price</dt>
+                        <dd class="modal-detail-value" id="modal-price"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Description</dt>
+                        <dd class="modal-detail-value" id="modal-description"></dd>
+                    </div>
+                </dl>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="takeJob()">Take Job</button>
+                <button class="btn btn-secondary" onclick="closeModal()" aria-label="Cancel and close modal">Cancel</button>
+                <button class="btn btn-primary" onclick="takeJob()" aria-label="Accept this job">Take Job</button>
             </div>
         </div>
     </div>

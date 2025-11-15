@@ -32,7 +32,7 @@ function validateField(fieldId) {
         const endDate = document.getElementById('end-date').value;
         const endTime = document.getElementById('end-time').value;
 
-        if (!startDate || !startTime || !endDate || !endTime) {
+        if (!startDate || !endDate  ) {
             group.classList.add('error');
             return false;
         }

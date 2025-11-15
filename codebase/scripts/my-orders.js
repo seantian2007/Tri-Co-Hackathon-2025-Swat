@@ -1,11 +1,25 @@
-// Get accepted jobs from localStorage
+// Get accepted jobs from localStorage (excluding completed ones)
 function getAcceptedJobs() {
+    const stored = localStorage.getItem('acceptedJobs');
+    const jobs = stored ? JSON.parse(stored) : [];
+    return jobs.filter(job => !job.completed);
+}
+
+// Get requested jobs from localStorage (excluding completed ones)
+function getRequestedJobs() {
+    const stored = localStorage.getItem('requestedJobs');
+    const jobs = stored ? JSON.parse(stored) : [];
+    return jobs.filter(job => !job.completed);
+}
+
+// Get all accepted jobs (including completed)
+function getAllAcceptedJobs() {
     const stored = localStorage.getItem('acceptedJobs');
     return stored ? JSON.parse(stored) : [];
 }
 
-// Get requested jobs from localStorage
-function getRequestedJobs() {
+// Get all requested jobs (including completed)
+function getAllRequestedJobs() {
     const stored = localStorage.getItem('requestedJobs');
     return stored ? JSON.parse(stored) : [];
 }
@@ -80,13 +94,18 @@ function renderAcceptedJobs() {
     }
 
     container.innerHTML = '';
-    jobs.forEach(job => {
-        const card = document.createElement('div');
+    jobs.forEach((job, index) => {
+        const card = document.createElement('article');
         card.className = 'order-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('aria-label', `Accepted job: ${job.mission}`);
 
         const timeElapsed = getTimeElapsed(job.acceptedAt);
         const dueInfo = job.timeFrame ? 
             getTimeUntilDue(job.timeFrame.endDate, job.timeFrame.endTime) : null;
+        
+        // Create a unique identifier for the job
+        const jobIdentifier = job.id || job.acceptedAt || `accepted-${index}`;
 
         card.innerHTML = `
             <div class="job-college college-${job.college}">${job.collegeName}</div>
@@ -118,6 +137,11 @@ function renderAcceptedJobs() {
                     <span class="order-detail-value">${job.description}</span>
                 </div>
             ` : ''}
+            <div class="order-actions">
+                <button class="btn btn-complete" onclick="completeAcceptedJob('${jobIdentifier}')" aria-label="Mark this accepted order as complete">
+                    Complete Order
+                </button>
+            </div>
         `;
 
         container.appendChild(card);
@@ -139,14 +163,19 @@ function renderRequestedJobs() {
     }
 
     container.innerHTML = '';
-    jobs.forEach(job => {
-        const card = document.createElement('div');
+    jobs.forEach((job, index) => {
+        const card = document.createElement('article');
         card.className = 'order-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('aria-label', `Requested job: ${job.destination}`);
 
         const timeFrame = job.timeFrame ? 
             `${job.timeFrame.startDate} ${job.timeFrame.startTime} - ${job.timeFrame.endDate} ${job.timeFrame.endTime}` : 
             'Not specified';
 
+        // Create a unique ID for requested jobs if they don't have one
+        const jobId = job.id || `requested-${job.destination}-${job.timeFrame?.startDate || index}`;
+        
         card.innerHTML = `
             <div class="service-type-badge">${job.serviceType}</div>
             <div class="order-mission">Request: ${job.destination}</div>
@@ -169,10 +198,98 @@ function renderRequestedJobs() {
                     <span class="order-detail-value">${job.moreDetails}</span>
                 </div>
             ` : ''}
+            <div class="order-actions">
+                <button class="btn btn-complete" onclick="completeRequestedJob('${jobId}')" aria-label="Mark this requested order as complete">
+                    Complete Order
+                </button>
+            </div>
         `;
 
         container.appendChild(card);
     });
+}
+
+// Complete an accepted job
+function completeAcceptedJob(jobIdentifier) {
+    const allJobs = getAllAcceptedJobs();
+    const jobIndex = allJobs.findIndex(job => {
+        // Match by ID or acceptedAt timestamp
+        return (job.id && job.id.toString() === jobIdentifier) || 
+               (job.acceptedAt && job.acceptedAt === jobIdentifier);
+    });
+    
+    if (jobIndex > -1) {
+        allJobs[jobIndex].completed = true;
+        allJobs[jobIndex].completedAt = new Date().toISOString();
+        localStorage.setItem('acceptedJobs', JSON.stringify(allJobs));
+        
+        // Show success animation
+        showOrderCompletedAnimation();
+        
+        // Update profile stats if function exists
+        if (typeof window.updateProfileStats === 'function') {
+            window.updateProfileStats();
+        }
+        
+        // Re-render to remove completed job
+        renderAcceptedJobs();
+    }
+}
+
+// Complete a requested job
+function completeRequestedJob(jobId) {
+    const allJobs = getAllRequestedJobs();
+    const jobIndex = allJobs.findIndex((job, index) => {
+        const currentId = job.id || `requested-${job.destination}-${job.timeFrame?.startDate || index}`;
+        return currentId === jobId;
+    });
+    
+    if (jobIndex > -1) {
+        allJobs[jobIndex].completed = true;
+        allJobs[jobIndex].completedAt = new Date().toISOString();
+        localStorage.setItem('requestedJobs', JSON.stringify(allJobs));
+        
+        // Show success animation
+        showOrderCompletedAnimation();
+        
+        // Update profile stats if function exists
+        if (typeof window.updateProfileStats === 'function') {
+            window.updateProfileStats();
+        }
+        
+        // Re-render to remove completed job
+        renderRequestedJobs();
+    }
+}
+
+// Show success animation when order is completed
+function showOrderCompletedAnimation() {
+    const notification = document.createElement('div');
+    notification.className = 'order-completed-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">✓</div>
+            <div class="notification-text">
+                <div class="notification-title">Order Completed!</div>
+                <div class="notification-message">The order has been removed from your list.</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.add('hide');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 2500);
 }
 
 // Initialize

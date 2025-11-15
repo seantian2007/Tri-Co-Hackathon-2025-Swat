@@ -113,7 +113,7 @@
 
 /* Achievement Card */
 .achievement-card {
-    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    background: #FFFFFF;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
@@ -122,7 +122,7 @@
 }
 
 .achievement-card:hover {
-    background: linear-gradient(135deg, #FFECB3 0%, #FFE082 100%);
+    background: #FFFFFF;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(255, 179, 0, 0.3);
     border-color: rgba(255, 179, 0, 0.5);
@@ -145,5 +145,51 @@
     color: rgba(0, 0, 0, 0.54);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+/* Responsive card improvements */
+@media (max-width: 768px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 16px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .achievement-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .achievement-card {
+        padding: 12px;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+    
+    .achievement-icon {
+        font-size: 32px;
+    }
+    
+    .achievement-value {
+        font-size: 20px;
+    }
 }
 
