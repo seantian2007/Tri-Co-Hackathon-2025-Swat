@@ -1,0 +1,212 @@
+body {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px),
+        repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(255, 179, 0, 0.04) 40px, rgba(255, 179, 0, 0.04) 80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-content {
+    max-width: 800px;
+    margin-right: auto;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+/* Request Form Card */
+.request-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.mdc-text-field {
+    width: 100%;
+    padding: 12px 0;
+}
+
+.mdc-text-field:focus {
+    padding-bottom: 11px;
+}
+
+/* Focus styles for accessibility */
+.mdc-select:focus,
+.mdc-text-field:focus,
+.mdc-textarea:focus,
+.datetime-input:focus {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .request-card {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .request-card {
+        padding: 20px;
+    }
+    
+    .datetime-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .request-card {
+        padding: 16px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Request Submitted Notification Animation */
+.request-submitted-notification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(400px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.request-submitted-notification.show {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.request-submitted-notification.hide {
+    opacity: 0;
+    transform: translateX(400px) scale(0.8);
+}
+
+.request-submitted-notification .notification-content {
+    background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
+    color: #FFFFFF;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(255, 179, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 320px;
+    max-width: 400px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: pulse 0.6s ease-out;
+}
+
+.request-submitted-notification .notification-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    flex-shrink: 0;
+    animation: checkmark 0.5s ease-out 0.2s both;
+}
+
+.request-submitted-notification .notification-text {
+    flex: 1;
+}
+
+.request-submitted-notification .notification-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.request-submitted-notification .notification-message {
+    font-size: 14px;
+    opacity: 0.95;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for notification */
+@media (max-width: 768px) {
+    .request-submitted-notification {
+        top: 16px;
+        right: 16px;
+        left: 16px;
+        transform: translateY(-100px) scale(0.8);
+    }
+    
+    .request-submitted-notification.show {
+        transform: translateY(0) scale(1);
+    }
+    
+    .request-submitted-notification.hide {
+        transform: translateY(-100px) scale(0.8);
+    }
+    
+    .request-submitted-notification .notification-content {
+        min-width: auto;
+        max-width: 100%;
+    }
+}
+

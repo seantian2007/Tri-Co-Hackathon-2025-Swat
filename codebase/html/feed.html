@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hive - Jobs Feed</title>
+    
+    <!-- Google Fonts - Material Design Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/feed.css">
+    <script src="../scripts/settings.js"></script>
+</head>
+<body>
+    <!-- Left Navigation Sidebar -->
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">🐝</div>
+            <div class="nav-title">The Hive</div>
+        </div>
+        <button class="nav-button active" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" aria-current="page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page" data-i18n="nav.request">Request Page</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title" data-i18n="feed.title">Available Jobs</h1>
+            <p class="page-subtitle" data-i18n="feed.subtitle">Browse and accept jobs from The Hive community</p>
+        </div>
+
+        <!-- Jobs List -->
+        <section class="jobs-container" id="jobs-container" aria-label="Available jobs list" role="list">
+            <!-- Jobs will be dynamically inserted here -->
+        </section>
+    </main>
+
+    <!-- Job Detail Modal -->
+    <div class="modal" id="job-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close job details modal"></button>
+            <div class="modal-header">
+                <div class="job-college" id="modal-college" aria-hidden="true"></div>
+                <h2 class="modal-title" id="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <dl>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Mission</dt>
+                        <dd class="modal-detail-value" id="modal-mission"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Destination</dt>
+                        <dd class="modal-detail-value" id="modal-destination"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Time Needed</dt>
+                        <dd class="modal-detail-value" id="modal-time"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Price</dt>
+                        <dd class="modal-detail-value" id="modal-price"></dd>
+                    </div>
+                    <div class="modal-detail-section">
+                        <dt class="modal-detail-label">Description</dt>
+                        <dd class="modal-detail-value" id="modal-description"></dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()" aria-label="Cancel and close modal" data-i18n="common.cancel">Cancel</button>
+                <button class="btn btn-primary" onclick="takeJob()" aria-label="Accept this job" data-i18n="feed.takeJob">Take Job</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/feed.js"></script>
+</body>
+</html>
+

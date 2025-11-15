@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - The Hive</title>
+    
+    <!-- Google Fonts - Material Design Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css">
+    <script src="../scripts/settings.js"></script>
+</head>
+<body>
+    <!-- Left Navigation Sidebar -->
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">🐝</div>
+            <div class="nav-title">The Hive</div>
+        </div>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button active" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" aria-current="page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page" data-i18n="nav.request">Request Page</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title" data-i18n="profile.title">Profile</h1>
+            <p class="page-subtitle" data-i18n="profile.subtitle">Manage your account and view your achievements</p>
+        </div>
+
+        <!-- Profile Info Section -->
+        <section class="profile-section" aria-labelledby="profile-heading">
+            <h2 id="profile-heading" class="sr-only">Profile Information</h2>
+            <div class="profile-header">
+                <button class="profile-picture-container" onclick="document.getElementById('profile-picture-input').click()" aria-label="Upload profile picture" type="button">
+                    <div class="profile-picture" id="profile-picture" role="img" aria-label="Profile picture">
+                        <div class="profile-picture-placeholder" id="profile-placeholder" aria-hidden="true">👤</div>
+                        <img id="profile-image" style="display: none;" alt="Profile Picture">
+                    </div>
+                    <div class="profile-picture-upload-hint">Click to upload</div>
+                </button>
+                <div class="profile-info">
+                    <div class="profile-name" id="profile-name" aria-label="User name">User Name</div>
+                    <div class="profile-email" id="profile-email" aria-label="User email">user@swarthmore.edu</div>
+                </div>
+            </div>
+            <input type="file" id="profile-picture-input" class="hidden-file-input" accept="image/*" aria-label="Select profile picture">
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-grid" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="sr-only">Statistics</h2>
+            <div class="stat-card" role="article" aria-label="Total completed orders">
+                <div class="stat-value" id="total-completed" aria-live="polite">0</div>
+                <div class="stat-label" data-i18n="profile.totalCompleted">Total Completed</div>
+            </div>
+            <div class="stat-card" role="article" aria-label="Total requested orders">
+                <div class="stat-value" id="total-requested" aria-live="polite">0</div>
+                <div class="stat-label" data-i18n="profile.ordersRequested">Orders Requested</div>
+            </div>
+            <div class="stat-card" role="article" aria-label="Total delivered orders">
+                <div class="stat-value" id="total-delivered" aria-live="polite">0</div>
+                <div class="stat-label" data-i18n="profile.ordersDelivered">Orders Delivered</div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="achievements-section" aria-labelledby="achievements-heading">
+            <h2 class="section-title" id="achievements-heading" data-i18n="profile.completedByType">Completed Orders by Type</h2>
+            <div class="achievements-grid" role="list">
+                <div class="achievement-card" role="listitem" aria-label="Delivery orders completed">
+                    <div class="achievement-icon" aria-hidden="true">📦</div>
+                    <div class="achievement-value" id="delivery-count" aria-live="polite">0</div>
+                    <div class="achievement-label" data-i18n="profile.delivery">Delivery</div>
+                </div>
+                <div class="achievement-card" role="listitem" aria-label="Tutoring orders completed">
+                    <div class="achievement-icon" aria-hidden="true">📚</div>
+                    <div class="achievement-value" id="tutoring-count" aria-live="polite">0</div>
+                    <div class="achievement-label" data-i18n="profile.tutoring">Tutoring</div>
+                </div>
+                <div class="achievement-card" role="listitem" aria-label="Moving orders completed">
+                    <div class="achievement-icon" aria-hidden="true">🚚</div>
+                    <div class="achievement-value" id="moving-count" aria-live="polite">0</div>
+                    <div class="achievement-label" data-i18n="profile.others">Others</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section class="settings-section" aria-labelledby="settings-heading">
+            <h2 class="section-title" id="settings-heading" data-i18n="profile.settings">Settings</h2>
+            <div class="settings-item">
+                <label for="language-select" class="settings-label" data-i18n="profile.language">Language</label>
+                <div class="settings-control">
+                    <select id="language-select" class="settings-select" aria-label="Select language preference">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-item">
+                <label for="font-size-input" class="settings-label" data-i18n="profile.fontSize">Font Size</label>
+                <div class="settings-control">
+                    <input type="number" id="font-size-input" class="settings-input" min="12" max="24" value="16" aria-label="Font size in pixels">
+                    <span aria-hidden="true">px</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logout Section -->
+        <section class="logout-section">
+            <button class="btn btn-logout" id="logout-button" aria-label="Log out of your account" data-i18n="common.logout">Logout</button>
+        </section>
+    </main>
+
+    <script src="../scripts/profile.js"></script>
+</body>
+</html>
+
+

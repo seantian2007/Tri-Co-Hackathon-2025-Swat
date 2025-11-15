@@ -1,0 +1,44 @@
+/* College Badges */
+.job-college {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.college-swarthmore {
+    background: linear-gradient(135deg, #FFECB3 0%, #FFE082 100%);
+    color: #FF8F00;
+    border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.college-haverford {
+    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 100%);
+    color: #FF6F00;
+    border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.college-brynmawr {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    color: #FF8F00;
+    border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+/* Service Type Badge */
+.service-type-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #FFECB3 0%, #FFE082 100%);
+    color: #FF8F00;
+    border: 1px solid rgba(255, 179, 0, 0.3);
+}
+

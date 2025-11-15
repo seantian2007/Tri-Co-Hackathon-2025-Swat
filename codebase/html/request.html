@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Page - The Hive</title>
+    
+    <!-- Google Fonts - Material Design Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/request.css">
+    <script src="../scripts/settings.js"></script>
+</head>
+<body>
+    <!-- Left Navigation Sidebar -->
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">🐝</div>
+            <div class="nav-title">The Hive</div>
+        </div>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page" data-i18n="nav.feed">Feed</button>
+        <button class="nav-button" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" data-i18n="nav.myOrders">My Orders</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page" data-i18n="nav.profile">Profile</button>
+        <button class="nav-button active" onclick="window.location.href='request.html'" aria-label="Go to Request Page" aria-current="page" data-i18n="nav.request">Request Page</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title" data-i18n="request.title">Create Request</h1>
+            <p class="page-subtitle" data-i18n="request.subtitle">Post a new job request for The Hive community</p>
+        </div>
+
+        <section class="request-card" aria-labelledby="request-form-heading">
+            <h2 id="request-form-heading" class="sr-only">Create Job Request Form</h2>
+            <form id="request-form" aria-label="Create job request form">
+                <!-- Service Type -->
+                <div class="form-group" id="service-type-group">
+                    <label class="form-label required" for="service-type">Service Type</label>
+                    <select id="service-type" class="mdc-select" required>
+                        <option value="">Select a service type</option>
+                        <option value="delivery">Delivery</option>
+                        <option value="tutoring">Tutoring</option>
+                        <option value="moving">Moving</option>
+                    </select>
+                    <div class="error-message">Please select a service type</div>
+                </div>
+
+                <!-- Fee -->
+                <div class="form-group" id="fee-group">
+                    <label class="form-label required" for="fee">Fee (Swat Points)</label>
+                    <select id="fee" class="mdc-select" required>
+                        <option value="">Select fee amount</option>
+                    </select>
+                    <div class="helper-text">Minimum 2 Swat Points</div>
+                    <div class="error-message">Please select a fee (minimum 2 points)</div>
+                </div>
+
+                <!-- College -->
+                <div class="form-group" id="college-group">
+                    <label class="form-label required" for="college">College</label>
+                    <select id="college" class="mdc-select" required>
+                        <option value="">Select your college</option>
+                        <option value="swarthmore">Swarthmore</option>
+                        <option value="haverford">Haverford</option>
+                        <option value="brynmawr">Bryn Mawr</option>
+                    </select>
+                    <div class="error-message">Please select your college</div>
+                </div>
+
+                <!-- Destination -->
+                <div class="form-group" id="destination-group">
+                    <label class="form-label required" for="destination">Destination</label>
+                    <input 
+                        type="text" 
+                        id="destination" 
+                        class="mdc-text-field" 
+                        placeholder="Enter destination address or location"
+                        required
+                    />
+                    <div class="error-message">Please enter a destination</div>
+                </div>
+
+                <!-- Time Frame -->
+                <div class="form-group" id="timeframe-group">
+                    <label class="form-label required">Time Frame</label>
+                    <div class="datetime-container">
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="start-date">Start Date</label>
+                            <input type="date" id="start-date" class="datetime-input" required />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="start-time">Start Time</label>
+                            <input type="time" id="start-time" class="datetime-input"  />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="end-date">End Date</label>
+                            <input type="date" id="end-date" class="datetime-input" required />
+                        </div>
+                        <div class="datetime-group">
+                            <label class="datetime-label" for="end-time">End Time</label>
+                            <input type="time" id="end-time" class="datetime-input"  />
+                        </div>
+                    </div>
+                    <div class="error-message">Please select a complete time frame</div>
+                </div>
+
+                <!-- More Details -->
+                <div class="form-group" id="details-group">
+                    <label class="form-label optional" for="more-details">More Details</label>
+                    <textarea 
+                        id="more-details" 
+                        class="mdc-textarea" 
+                        placeholder="Provide additional information about your request (optional)"
+                    ></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='feed.html'" data-i18n="common.return">Return</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn" data-i18n="request.submitRequest">Submit Request</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../scripts/request.js"></script>
+</body>
+</html>
+

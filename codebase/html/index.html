@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hive - Sign In</title>
+    
+    <!-- Google Fonts - Material Design Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../scripts/settings.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Background with three sections -->
+    <div class="background-container" aria-hidden="true">
+        <div class="background-section section-swarthmore"></div>
+        <div class="background-section section-haverford"></div>
+        <div class="background-section section-brynmawr"></div>
+    </div>
+
+    <!-- Sign-in card -->
+    <div class="signin-container">
+        <main class="signin-card" id="main-content">
+            <h1 class="signin-title" data-i18n="index.signIn">Sign In</h1>
+            <p class="signin-subtitle" data-i18n="index.welcome">Welcome to The Hive!</p>
+
+            <form id="signin-form" aria-label="Sign in form">
+                <!-- Email input with domain dropdown -->
+                <div class="form-group">
+                    <label class="mdc-floating-label" for="email-input" data-i18n="index.email">Email</label>
+                    <div class="email-container">
+                        <input 
+                            type="text" 
+                            id="email-input" 
+                            class="email-input" 
+                            placeholder="username"
+                            autocomplete="username"
+                            aria-label="Email username"
+                            aria-required="true"
+                        />
+                        <select id="domain-select" class="domain-select" aria-label="Email domain">
+                            <option value="@swarthmore.edu">@swarthmore.edu</option>
+                            <option value="@haverford.edu">@haverford.edu</option>
+                            <option value="@brynmawr.edu">@brynmawr.edu</option>
+                        </select>
+                    </div>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-group">
+                    <label class="mdc-floating-label" for="password-input" data-i18n="index.password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password-input" 
+                        class="mdc-text-field" 
+                        placeholder=" "
+                        autocomplete="current-password"
+                        aria-label="Password"
+                        aria-required="true"
+                    />
+                    <div class="mdc-line-ripple"></div>
+                </div>
+
+                <!-- Sign in button -->
+                <button type="submit" class="mdc-button" id="signin-button" aria-label="Sign in to The Hive" data-i18n="index.signIn">Sign In</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="../scripts/index.js"></script>
+</body>
+</html>
+

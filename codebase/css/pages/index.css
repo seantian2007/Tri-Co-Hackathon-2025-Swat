@@ -1,0 +1,294 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 50%, #FFE082 100%);
+}
+
+/* Hexagonal pattern overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(60deg, transparent, transparent 35px, rgba(255, 179, 0, 0.03) 35px, rgba(255, 179, 0, 0.03) 70px),
+        repeating-linear-gradient(120deg, transparent, transparent 35px, rgba(255, 179, 0, 0.03) 35px, rgba(255, 179, 0, 0.03) 70px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Background with three sections */
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+.background-section {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.background-section:hover {
+    transform: scale(1.02);
+}
+
+.background-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.section-swarthmore {
+    background-image: url('../../../assets/images/swarthmore.webp');
+}
+
+.section-haverford {
+    background-image: url('../../../assets/images/haverford.jpeg');
+}
+
+.section-brynmawr {
+    background-image: url('../../../assets/images/Bryn-Mawr-College.jpg');
+}
+
+/* Sign-in card container */
+.signin-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Material Design Card */
+.signin-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(255, 179, 0, 0.25),
+                0 3px 14px rgba(255, 179, 0, 0.15);
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 400px;
+    animation: cardEnter 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 2px solid rgba(255, 179, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.signin-card::after {
+    content: '🐝';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 120px;
+    opacity: 0.05;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.signin-card:hover {
+    box-shadow: 0 12px 32px rgba(255, 179, 0, 0.35),
+                0 4px 18px rgba(255, 179, 0, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(255, 179, 0, 0.5);
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signin-title {
+    font-size: 28px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #FF8F00 0%, #FFB300 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.signin-subtitle {
+    font-size: 15px;
+    color: #FF8F00;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+/* Email input with dropdown container */
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    transition: border-color 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.email-container:focus-within {
+    border-bottom: 2px solid #FFB300;
+}
+
+.email-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.87);
+    outline: none;
+}
+
+.email-input::placeholder {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.domain-select {
+    border: none;
+    background: transparent;
+    padding: 8px 28px 8px 8px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    border-radius: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FFB300' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position: relative;
+}
+
+.domain-select:hover {
+    background-color: rgba(255, 179, 0, 0.12);
+    color: #FF8F00;
+}
+
+.domain-select:focus {
+    background-color: rgba(255, 179, 0, 0.15);
+    color: #FF8F00;
+    font-weight: 700;
+}
+
+.email-container:focus-within .domain-select {
+    background-color: rgba(255, 179, 0, 0.12);
+    color: #FF8F00;
+}
+
+/* Style options to be bold when dropdown is expanded */
+.domain-select option {
+    font-weight: 700;
+    padding: 8px;
+}
+
+/* Ripple effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Focus styles for accessibility */
+.email-input:focus,
+.domain-select:focus,
+#password-input:focus {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .signin-card {
+        padding: 40px 32px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .signin-card {
+        padding: 32px 24px;
+        max-width: 95%;
+    }
+
+    .background-container {
+        flex-direction: column;
+    }
+
+    .background-section {
+        height: 33.333%;
+    }
+    
+    .signin-title {
+        font-size: 24px;
+    }
+    
+    .signin-subtitle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signin-title {
+        font-size: 20px;
+    }
+
+    .signin-card {
+        padding: 24px 16px;
+        max-width: 100%;
+        margin: 12px;
+    }
+    
+    .signin-subtitle {
+        font-size: 13px;
+    }
+    
+    .email-container {
+        flex-wrap: wrap;
+    }
+    
+    .domain-select {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
+

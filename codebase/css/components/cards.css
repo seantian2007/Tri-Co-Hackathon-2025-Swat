@@ -1,0 +1,195 @@
+/* Card Base */
+.card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
+    padding: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(255, 179, 0, 0.25);
+    transform: translateY(-2px);
+    border-color: rgba(255, 179, 0, 0.4);
+}
+
+/* Order Card */
+.order-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
+    padding: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.order-card:hover {
+    box-shadow: 0 4px 16px rgba(255, 179, 0, 0.25);
+    transform: translateY(-2px);
+    border-color: rgba(255, 179, 0, 0.4);
+}
+
+.order-card.empty {
+    text-align: center;
+    padding: 48px 24px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.empty-message {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Job Card */
+.job-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid rgba(255, 179, 0, 0.2);
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFB300 0%, #FF8F00 50%, #FFB300 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.job-card:hover::before {
+    opacity: 1;
+}
+
+.job-card:hover {
+    box-shadow: 0 4px 16px rgba(255, 179, 0, 0.3);
+    transform: translateY(-3px);
+    border-color: rgba(255, 179, 0, 0.5);
+}
+
+.job-card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.2);
+}
+
+/* Stat Card */
+.stat-card {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 500;
+    color: #FF8F00;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Achievement Card */
+.achievement-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.achievement-card:hover {
+    background: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 179, 0, 0.3);
+    border-color: rgba(255, 179, 0, 0.5);
+}
+
+.achievement-icon {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.achievement-value {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 4px;
+}
+
+.achievement-label {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive card improvements */
+@media (max-width: 768px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 16px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .achievement-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .achievement-card {
+        padding: 12px;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+    
+    .achievement-icon {
+        font-size: 32px;
+    }
+    
+    .achievement-value {
+        font-size: 20px;
+    }
+}
+
