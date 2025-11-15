@@ -89,7 +89,7 @@ body::before {
     gap: 8px;
     margin-top: 12px;
     padding: 12px;
-    background: linear-gradient(135deg, rgba(255, 236, 179, 0.3) 0%, rgba(255, 224, 130, 0.3) 100%);
+    background: #FFFFFF;
     border-radius: 8px;
     border: 1px solid rgba(255, 179, 0, 0.2);
 }

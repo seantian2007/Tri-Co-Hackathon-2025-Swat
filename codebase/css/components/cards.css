@@ -106,7 +106,7 @@
 
 /* Achievement Card */
 .achievement-card {
-    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    background: #FFFFFF;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
@@ -115,7 +115,7 @@
 }
 
 .achievement-card:hover {
-    background: linear-gradient(135deg, #FFECB3 0%, #FFE082 100%);
+    background: #FFFFFF;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(255, 179, 0, 0.3);
     border-color: rgba(255, 179, 0, 0.5);
