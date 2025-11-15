@@ -19,15 +19,28 @@ The Hive
 
 ### Live URLs
 
-*List any URLs relevant to demonstrating your prototype*
+URLs not available temporaly. Can run locally by simply open "index.html" in codebase\html\index.html
 
 ### Presentation
 
-*List any links to your presentation or any related visuals you want to share.*
+https://docs.google.com/presentation/d/1bhgJ6C0O76cG4eNa5Zip8DvMHc5f1PwG1be5tVRc7OI/edit?usp=sharing
 
 ### Next Steps
 
-*What do you need to do next to turn this prototype into a working solution?*
+Dev-side:
+- Working on the individual components of the system (backend, data management system, user interface)
+- Conducting the integration test by stimulating real-time user behaviors
+
+Consumer-side:
+- Collecting user feedback
+- Capturing the behavioral pattern of Queen Bees and Worker Bees by monitoring the data collected
+- Conducting capacity test simultaneously
+
+Further prospects:
+- Implementing the Campus Cash system in a way that’s similar to the SWAT point.
+- Giving more meal plan options similar to Swarthmore’s, allowing students to choose if they’d prefer more meal swipes/dining dollars/campus cash.
+- Partnering with businesses to allow the Campus Cash to be used on off-campus sites. 
+
 
 ### License
 
