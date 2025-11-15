@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Background with three sections -->
-    <div class="background-container">
+    <div class="background-container" aria-hidden="true">
         <div class="background-section section-swarthmore"></div>
         <div class="background-section section-haverford"></div>
         <div class="background-section section-brynmawr"></div>
@@ -21,11 +23,11 @@
 
     <!-- Sign-in card -->
     <div class="signin-container">
-        <div class="signin-card">
+        <main class="signin-card" id="main-content">
             <h1 class="signin-title">Sign In</h1>
             <p class="signin-subtitle">Welcome to The Hive!</p>
 
-            <form id="signin-form">
+            <form id="signin-form" aria-label="Sign in form">
                 <!-- Email input with domain dropdown -->
                 <div class="form-group">
                     <label class="mdc-floating-label" for="email-input">Email</label>
@@ -36,8 +38,10 @@
                             class="email-input" 
                             placeholder="username"
                             autocomplete="username"
+                            aria-label="Email username"
+                            aria-required="true"
                         />
-                        <select id="domain-select" class="domain-select">
+                        <select id="domain-select" class="domain-select" aria-label="Email domain">
                             <option value="@swarthmore.edu">@swarthmore.edu</option>
                             <option value="@haverford.edu">@haverford.edu</option>
                             <option value="@brynmawr.edu">@brynmawr.edu</option>
@@ -55,16 +59,18 @@
                         class="mdc-text-field" 
                         placeholder=" "
                         autocomplete="current-password"
+                        aria-label="Password"
+                        aria-required="true"
                     />
                     <div class="mdc-line-ripple"></div>
                 </div>
 
                 <!-- Sign in button -->
-                <button type="submit" class="mdc-button" id="signin-button">
+                <button type="submit" class="mdc-button" id="signin-button" aria-label="Sign in to The Hive">
                     Sign In
                 </button>
             </form>
-        </div>
+        </main>
     </div>
 
     <script src="../scripts/index.js"></script>

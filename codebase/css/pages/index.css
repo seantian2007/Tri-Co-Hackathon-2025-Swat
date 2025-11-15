@@ -228,11 +228,26 @@ body::before {
     }
 }
 
+/* Focus styles for accessibility */
+.email-input:focus,
+.domain-select:focus,
+#password-input:focus {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
+}
+
 /* Responsive design */
+@media (max-width: 1024px) {
+    .signin-card {
+        padding: 40px 32px;
+        max-width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
     .signin-card {
         padding: 32px 24px;
-        max-width: 100%;
+        max-width: 95%;
     }
 
     .background-container {
@@ -241,6 +256,14 @@ body::before {
 
     .background-section {
         height: 33.333%;
+    }
+    
+    .signin-title {
+        font-size: 24px;
+    }
+    
+    .signin-subtitle {
+        font-size: 14px;
     }
 }
 
@@ -251,6 +274,21 @@ body::before {
 
     .signin-card {
         padding: 24px 16px;
+        max-width: 100%;
+        margin: 12px;
+    }
+    
+    .signin-subtitle {
+        font-size: 13px;
+    }
+    
+    .email-container {
+        flex-wrap: wrap;
+    }
+    
+    .domain-select {
+        width: 100%;
+        margin-top: 8px;
     }
 }
 

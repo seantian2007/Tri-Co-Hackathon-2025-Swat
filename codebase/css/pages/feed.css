@@ -182,9 +182,20 @@ body::before {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .jobs-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .jobs-container {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .job-card {
+        padding: 16px;
     }
     
     .job-accepted-notification {
@@ -205,6 +216,21 @@ body::before {
     .notification-content {
         min-width: auto;
         max-width: 100%;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .jobs-container {
+        gap: 10px;
+    }
+    
+    .job-mission {
+        font-size: 16px;
+    }
+    
+    .job-price {
+        font-size: 18px;
     }
 }
 

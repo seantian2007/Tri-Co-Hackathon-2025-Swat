@@ -140,3 +140,49 @@
     letter-spacing: 0.5px;
 }
 
+/* Responsive card improvements */
+@media (max-width: 768px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 16px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .achievement-card {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card,
+    .order-card,
+    .job-card {
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .achievement-card {
+        padding: 12px;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+    
+    .achievement-icon {
+        font-size: 32px;
+    }
+    
+    .achievement-value {
+        font-size: 20px;
+    }
+}
+

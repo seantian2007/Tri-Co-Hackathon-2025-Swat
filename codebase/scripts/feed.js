@@ -168,9 +168,18 @@ function renderJobs() {
     }
 
     filteredJobs.forEach(job => {
-        const jobCard = document.createElement('div');
+        const jobCard = document.createElement('article');
         jobCard.className = 'job-card';
+        jobCard.setAttribute('role', 'listitem');
+        jobCard.setAttribute('aria-label', `Job: ${job.mission}`);
+        jobCard.setAttribute('tabindex', '0');
         jobCard.onclick = () => openModal(job.id);
+        jobCard.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(job.id);
+            }
+        };
 
         jobCard.innerHTML = `
             <div class="job-college college-${job.college}">${job.collegeName}</div>
@@ -213,13 +222,21 @@ function openModal(jobId) {
     document.getElementById('modal-description').textContent = job.description;
 
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    
+    // Focus on modal close button for accessibility
+    setTimeout(() => {
+        const closeButton = modal.querySelector('.modal-close');
+        if (closeButton) closeButton.focus();
+    }, 100);
 }
 
 // Close modal
 function closeModal() {
     const modal = document.getElementById('job-modal');
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentJobId = null;
 }

@@ -13,15 +13,15 @@
 </head>
 <body>
     <!-- Left Navigation Sidebar -->
-    <nav class="nav-sidebar">
+    <nav class="nav-sidebar" role="navigation" aria-label="Main navigation">
         <div class="nav-brand">
-            <div class="nav-logo">🐝</div>
+            <div class="nav-logo" aria-hidden="true">🐝</div>
             <div class="nav-title">The Hive</div>
         </div>
-        <button class="nav-button" onclick="window.location.href='feed.html'">Feed</button>
-        <button class="nav-button active" onclick="window.location.href='my-orders.html'">My Order</button>
-        <button class="nav-button" onclick="window.location.href='profile.html'">Profile</button>
-        <button class="nav-button" onclick="window.location.href='request.html'">Request Page</button>
+        <button class="nav-button" onclick="window.location.href='feed.html'" aria-label="Go to Feed page">Feed</button>
+        <button class="nav-button active" onclick="window.location.href='my-orders.html'" aria-label="Go to My Orders page" aria-current="page">My Order</button>
+        <button class="nav-button" onclick="window.location.href='profile.html'" aria-label="Go to Profile page">Profile</button>
+        <button class="nav-button" onclick="window.location.href='request.html'" aria-label="Go to Request Page">Request Page</button>
     </nav>
 
     <!-- Main Content -->
@@ -33,26 +33,26 @@
 
         <div class="orders-container">
             <!-- Accepted Jobs Section -->
-            <div>
+            <section aria-labelledby="accepted-jobs-heading">
                 <div class="section-header">
-                    <h2 class="section-title">Accepted Jobs</h2>
+                    <h2 class="section-title" id="accepted-jobs-heading">Accepted Jobs</h2>
                     <p class="section-subtitle">Jobs you have taken</p>
                 </div>
-                <div id="accepted-jobs-container">
+                <div id="accepted-jobs-container" role="list" aria-label="List of accepted jobs">
                     <!-- Accepted jobs will be inserted here -->
                 </div>
-            </div>
+            </section>
 
             <!-- Requested Jobs Section -->
-            <div>
+            <section aria-labelledby="requested-jobs-heading">
                 <div class="section-header">
-                    <h2 class="section-title">Requested Jobs</h2>
+                    <h2 class="section-title" id="requested-jobs-heading">Requested Jobs</h2>
                     <p class="section-subtitle">Jobs you have posted</p>
                 </div>
-                <div id="requested-jobs-container">
+                <div id="requested-jobs-container" role="list" aria-label="List of requested jobs">
                     <!-- Requested jobs will be inserted here -->
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 

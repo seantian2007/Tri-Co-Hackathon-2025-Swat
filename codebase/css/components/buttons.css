@@ -32,8 +32,14 @@
 }
 
 .mdc-button:focus {
-    outline: none;
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
     box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.4);
+}
+
+.mdc-button:focus-visible {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
 }
 
 /* Action Buttons */
@@ -68,6 +74,18 @@
 .btn-secondary:hover {
     background: rgba(255, 179, 0, 0.1);
     color: #FF8F00;
+}
+
+.btn-secondary:focus,
+.btn-primary:focus {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
+}
+
+.btn-secondary:focus-visible,
+.btn-primary:focus-visible {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
 }
 
 .btn-primary {

@@ -47,16 +47,47 @@ body::before {
     padding-bottom: 11px;
 }
 
+/* Focus styles for accessibility */
+.mdc-select:focus,
+.mdc-text-field:focus,
+.mdc-textarea:focus,
+.datetime-input:focus {
+    outline: 3px solid #FFB300;
+    outline-offset: 2px;
+}
+
 /* Responsive */
+@media (max-width: 1024px) {
+    .request-card {
+        padding: 28px;
+    }
+}
+
 @media (max-width: 768px) {
     .request-card {
-        padding: 24px;
+        padding: 20px;
+    }
+    
+    .datetime-container {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
     .request-card {
         padding: 16px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
     }
 }
 
